@@ -6,4 +6,5 @@ type Repository interface {
 	FindByEmail(email string) (*user.User, error)
 	FindSheetByEmail(email string) (*user.UserResponse, error)
 	CreateSession(*user.User) error
+	DeleteSession(email string) error
 }

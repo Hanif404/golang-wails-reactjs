@@ -42,7 +42,7 @@ func (s *service) Login(login *auth.Login) error {
 	resultSheet.Data.Password = string(hashedPassword)
 
 	// create in table session
-	if result.Email != resultSheet.Data.Email {
+	if result == nil {
 		err = s.repo.CreateSession(&user.User{
 			Name:     resultSheet.Data.Name,
 			Email:    resultSheet.Data.Email,
@@ -52,6 +52,20 @@ func (s *service) Login(login *auth.Login) error {
 		if err != nil {
 			return err
 		}
+	}
+	return nil
+}
+
+func (s *service) Logout(email string) error {
+	_, err := s.repo.FindByEmail(email)
+	if err != nil {
+		return err
+	}
+
+	// delete in table session
+	err = s.repo.DeleteSession(email)
+	if err != nil {
+		return err
 	}
 	return nil
 }

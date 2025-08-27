@@ -11,8 +11,8 @@ function Login() {
     const [message, setMessage] = useState('');
     const updateEmail = (e: any) => setEmail(e.target.value);
     const updatePassword = (e: any) => setPassword(e.target.value);
-
-    if(localStorage.getItem('user') != ""){
+    
+    if(localStorage.getItem('user') && localStorage.getItem('user') != ""){
         window.location.href = "./main.html";
     }
 
@@ -56,7 +56,7 @@ function Login() {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control autoComplete="off"  onChange={updatePassword} name="input" type="password" placeholder="enter password"/>
+                            <Form.Control autoComplete="off" onChange={updatePassword} name="input" type="password" placeholder="enter password"/>
                         </Form.Group>
                         <Button variant="primary" type="submit" className="w-100" disabled={isSubmit}>
                             Log In

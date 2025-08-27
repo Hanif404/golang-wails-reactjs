@@ -29,3 +29,15 @@ func (h *Handler) PostLogin(payload auth.Login) string {
 	}
 	return wrapper.Response(true, "Login success", nil)
 }
+
+func (h *Handler) PostLogout(payload string) string {
+	if payload == "" {
+		return wrapper.Response(false, "email atau password tidak sesuai", nil)
+	}
+
+	err := h.service.Logout(payload)
+	if err != nil {
+		return wrapper.Response(false, err.Error(), nil)
+	}
+	return wrapper.Response(true, "Logout success", nil)
+}

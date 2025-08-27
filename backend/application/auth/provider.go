@@ -27,3 +27,7 @@ func Provider(db *sql.DB) *App {
 func (a *App) ActionLogin(payload auth.Login) string {
 	return a.handler.PostLogin(payload)
 }
+
+func (a *App) ActionLogout(payload string) string {
+	return a.handler.PostLogout(payload)
+}

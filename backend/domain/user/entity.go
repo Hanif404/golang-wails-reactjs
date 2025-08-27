@@ -2,10 +2,10 @@ package user
 
 type User struct {
 	ID       int
-	Name     string
-	Email    string
-	Password string
-	Role     string
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	Role     string `json:"role"`
 	LoginAt  int64
 }
 

@@ -1,11 +1,22 @@
 import { useState } from 'react';
-import { Container, Nav,Navbar, Offcanvas, NavDropdown} from 'react-bootstrap';
+import { Container, Nav,Navbar, Offcanvas} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { ActionLogout } from "../../../wailsjs/go/auth/App";
 
 function Sidebar() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const submitLogout = (event: any) => {
+        event.preventDefault();
+
+        ActionLogout(localStorage.getItem('user') || '').then(() => {
+            localStorage.removeItem('user');
+            window.location.href = "./index.html";
+        });
+    }
+
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary">
@@ -14,7 +25,7 @@ function Sidebar() {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
                             <Nav.Link href="#login">{localStorage.getItem('user')}</Nav.Link>
-                            <Nav.Link href="#signup">Log Out</Nav.Link>
+                            <Nav.Link href="#logout" onClick={submitLogout}>Log Out</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

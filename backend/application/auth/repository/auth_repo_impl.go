@@ -58,3 +58,11 @@ func (r *repo) CreateSession(user *user.User) error {
 	}
 	return nil
 }
+
+func (r *repo) DeleteSession(email string) error {
+	_, err := r.db.Exec("DELETE FROM session WHERE email = ?", email)
+	if err != nil {
+		return err
+	}
+	return nil
+}

@@ -36,4 +36,9 @@ func createTable() {
 	if err != nil {
 		panic(err)
 	}
+
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS data_siswa (id INTEGER PRIMARY KEY, NIS TEXT, namaLengkap TEXT, jenisKelamin TEXT, tempatLahir TEXT, tglLahir INTEGER, kelas TEXT, angkatan TEXT, alamat TEXT, namaAyah TEXT, namaIbu TEXT, phoneOrtu TEXT, email TEXT, status TEXT, synced BOOLEAN DEFAULT 0, createdBy TEXT, createdAt INTEGER)")
+	if err != nil {
+		panic(err)
+	}
 }

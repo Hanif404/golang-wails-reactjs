@@ -5,3 +5,7 @@
 export function ActionLogin(arg1) {
   return window['go']['auth']['App']['ActionLogin'](arg1);
 }
+
+export function ActionLogout(arg1) {
+  return window['go']['auth']['App']['ActionLogout'](arg1);
+}

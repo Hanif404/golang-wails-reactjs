@@ -3,3 +3,5 @@
 import {auth} from '../models';
 
 export function ActionLogin(arg1:auth.Login):Promise<string>;
+
+export function ActionLogout(arg1:string):Promise<string>;
