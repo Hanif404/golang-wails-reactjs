@@ -1,0 +1,13 @@
+html {
+    background-color: white;
+    color: black;
+}
+
+body {
+    margin: 0;
+    color: black;
+}
+
+#app {
+    height: 100vh;
+}
