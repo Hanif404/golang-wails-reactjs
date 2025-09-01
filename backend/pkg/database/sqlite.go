@@ -22,7 +22,7 @@ func ConnDB() *sql.DB {
 }
 
 func createTable() {
-	_, err := db.Exec("CREATE TABLE IF NOT EXISTS session (id INTEGER PRIMARY KEY, name TEXT, email TEXT, password TEXT, loginAt INTEGER)")
+	_, err := db.Exec("CREATE TABLE IF NOT EXISTS session (id INTEGER PRIMARY KEY, name TEXT, email TEXT, password TEXT, role TEXT, loginAt INTEGER)")
 	if err != nil {
 		panic(err)
 	}

@@ -4,9 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/login';
 import react from 'react';
 
-document.addEventListener('contextmenu', function(event) {
-    event.preventDefault();
-});
+// document.addEventListener('contextmenu', function(event) {
+//     event.preventDefault();
+// });
 
 const container = document.getElementById('loginView')
 const root = createRoot(container!)

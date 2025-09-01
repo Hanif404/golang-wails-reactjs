@@ -52,7 +52,7 @@ func (r *repo) FindSheetByEmail(email string) (*user.UserResponse, error) {
 }
 
 func (r *repo) CreateSession(user *user.User) error {
-	_, err := r.db.Exec("INSERT INTO session (email, name, password, loginAt) VALUES (?, ?, ?, ?)", user.Email, user.Name, user.Password, user.LoginAt)
+	_, err := r.db.Exec("INSERT INTO session (email, name, password, role, loginAt) VALUES (?, ?, ?, ?, ?)", user.Email, user.Name, user.Password, user.Role, user.LoginAt)
 	if err != nil {
 		return err
 	}

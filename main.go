@@ -4,6 +4,7 @@ import (
 	"embed"
 
 	"golang-wails-reactjs/backend/application/auth"
+	"golang-wails-reactjs/backend/application/student"
 	sqlite "golang-wails-reactjs/backend/pkg/database"
 
 	"github.com/wailsapp/wails/v2"
@@ -19,6 +20,7 @@ func main() {
 	// Create an instance of the app structure
 	app := NewApp()
 	auth := auth.Provider(db)
+	student := student.Provider(db)
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -33,6 +35,7 @@ func main() {
 		Bind: []interface{}{
 			app,
 			auth,
+			student,
 		},
 	})
 

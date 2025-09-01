@@ -20,7 +20,7 @@ function Sidebar() {
     return (
         <>
             <Navbar expand="lg" className="bg-body-tertiary">
-                <Navbar.Brand onClick={handleShow} style={{cursor: "pointer", paddingLeft:'20px'}}>My App</Navbar.Brand>
+                <Navbar.Brand onClick={handleShow} style={{cursor: "pointer", paddingLeft:'20px'}}>Menu</Navbar.Brand>
                 <Container fluid>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ms-auto">
@@ -32,11 +32,21 @@ function Sidebar() {
             </Navbar>
             <Offcanvas show={show} onHide={handleClose} placement="start">
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Sistem Sekolah</Offcanvas.Title>
+                    <Offcanvas.Title>Sistem Manajemen Sekolah</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="flex-column">
-                        <Nav.Link as={Link} to="/student" onClick={handleClose}>Student</Nav.Link>
+                        <Nav.Link as={Link} to="/student" onClick={handleClose}>Data Siswa</Nav.Link>
+                        <Nav.Link as={Link} to="/teacher" onClick={handleClose}>Data Guru & Staff</Nav.Link>
+                        <Nav.Link as={Link} to="/absensi" onClick={handleClose}>Absensi</Nav.Link>
+                        <Nav.Link as={Link} to="/kurikulum" onClick={handleClose}>Kurikulum</Nav.Link>
+                        <Nav.Link as={Link} to="/schedule" onClick={handleClose}>Jadwal & Pembelajaran</Nav.Link>
+                        <Nav.Link as={Link} to="/teacher" onClick={handleClose}>Penilaian</Nav.Link>
+                        <Nav.Link as={Link} to="/student/payment" onClick={handleClose}>Tagihan Siswa</Nav.Link>
+                        <Nav.Link as={Link} to="/teacher/payment" onClick={handleClose}>Gaji Guru & Staff</Nav.Link>
+                        <Nav.Link as={Link} to="/inventory" onClick={handleClose}>Inventaris Sekolah</Nav.Link>
+                        <Nav.Link as={Link} to="/tahfidz" onClick={handleClose}>Tahfidz Tahsin</Nav.Link>
+                        <Nav.Link as={Link} to="/konseling" onClick={handleClose}>Bimbingan Konseling</Nav.Link>
                         <Nav.Link as={Link} to="/sync" onClick={handleClose}>Sync</Nav.Link>
                     </Nav>
                 </Offcanvas.Body>

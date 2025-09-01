@@ -47,6 +47,7 @@ func (s *service) Login(login *auth.Login) error {
 			Name:     resultSheet.Data.Name,
 			Email:    resultSheet.Data.Email,
 			Password: resultSheet.Data.Password,
+			Role:     resultSheet.Data.Role,
 			LoginAt:  time.Now().UnixMilli(),
 		})
 		if err != nil {
