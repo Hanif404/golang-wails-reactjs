@@ -11,10 +11,6 @@ function Login() {
     const [message, setMessage] = useState('');
     const updateEmail = (e: any) => setEmail(e.target.value);
     const updatePassword = (e: any) => setPassword(e.target.value);
-    
-    if(localStorage.getItem('user') && localStorage.getItem('user') != ""){
-        window.location.href = "./main.html";
-    }
 
     const submitLogin = (event: any) => {
         event.preventDefault();
@@ -29,7 +25,7 @@ function Login() {
             const jsonResult = JSON.parse(result);
             if (jsonResult.status) {
                 localStorage.setItem('user', email);
-                window.location.href = "./main.html"; 
+                 window.location.reload();
             }
             
             if (!jsonResult.status) {
