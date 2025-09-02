@@ -27,7 +27,7 @@ func createTable() {
 		panic(err)
 	}
 
-	_, err = db.Exec("CREATE TABLE IF NOT EXISTS sync_sessions (id INTEGER PRIMARY KEY, syncType TEXT, createdAt INTEGER, startDate INTEGER, endDate INTEGER, message TEXT, status TEXT)")
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS sync_sessions (id INTEGER PRIMARY KEY, syncType TEXT, createdAt INTEGER, createdBy TEXT, startDate INTEGER, endDate INTEGER, message TEXT, status TEXT)")
 	if err != nil {
 		panic(err)
 	}
@@ -37,7 +37,7 @@ func createTable() {
 		panic(err)
 	}
 
-	_, err = db.Exec("CREATE TABLE IF NOT EXISTS data_siswa (id INTEGER PRIMARY KEY, NIS TEXT, namaLengkap TEXT, jenisKelamin TEXT, tempatLahir TEXT, tglLahir INTEGER, kelas TEXT, angkatan TEXT, alamat TEXT, namaAyah TEXT, namaIbu TEXT, phoneOrtu TEXT, email TEXT, status TEXT, synced BOOLEAN DEFAULT 0, createdBy TEXT, createdAt INTEGER)")
+	_, err = db.Exec("CREATE TABLE IF NOT EXISTS data_siswa (id INTEGER PRIMARY KEY, NIS TEXT, namaLengkap TEXT, jenisKelamin TEXT, tempatLahir TEXT, tglLahir INTEGER, kelas TEXT, angkatan TEXT, alamat TEXT, namaAyah TEXT, namaIbu TEXT, phoneOrtu TEXT, email TEXT, status TEXT, synced BOOLEAN DEFAULT 0, createdBy TEXT, createdAt INTEGER, keyData TEXT)")
 	if err != nil {
 		panic(err)
 	}

@@ -6,4 +6,7 @@ type Repository interface {
 	CreateStudent(student *Student) error
 	UpdateStudent(student *Student) error
 	DeleteStudent(id int) error
+
+	GetStudentsBySync() (*[]Student, error)
+	UpdateStudentSynced(id int) error
 }

@@ -2,14 +2,13 @@ import { Container, Row, Col, Button } from "react-bootstrap"
 import DataTable from 'datatables.net-react';
 import DT from 'datatables.net-bs5';
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Students, ActionDelete } from "../../wailsjs/go/student/App";
 
 DataTable.use(DT);
 
 function Student(){
     const navigate = useNavigate();
-    const location = useLocation();
     const [tableData, setTableData] = useState([]);
 
     useEffect(() => {

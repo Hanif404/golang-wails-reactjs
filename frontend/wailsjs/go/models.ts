@@ -37,6 +37,7 @@ export namespace student {
 	    synced: boolean;
 	    created_by: string;
 	    created_at: number;
+	    key: string;
 	
 	    static createFrom(source: any = {}) {
 	        return new Student(source);
@@ -61,6 +62,7 @@ export namespace student {
 	        this.synced = source["synced"];
 	        this.created_by = source["created_by"];
 	        this.created_at = source["created_at"];
+	        this.key = source["key"];
 	    }
 	}
 

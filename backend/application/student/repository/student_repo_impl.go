@@ -45,7 +45,7 @@ func (r *repo) GetStudent(id int) (*student.Student, error) {
 }
 
 func (r *repo) CreateStudent(s *student.Student) error {
-	_, err := r.db.Exec("INSERT INTO data_siswa (NIS, namaLengkap, jenisKelamin, tempatLahir, tglLahir, kelas, angkatan, alamat, namaAyah, namaIbu, phoneOrtu, email, status, createdBy, createdAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", s.Nis, s.Name, s.Gender, s.TempatLahir, s.TanggalLahir, s.Kelas, s.Angkatan, s.Alamat, s.NamaAyah, s.NamaIbu, s.Phone, s.Email, s.Status, s.CreatedBy, s.CreatedAt)
+	_, err := r.db.Exec("INSERT INTO data_siswa (NIS, namaLengkap, jenisKelamin, tempatLahir, tglLahir, kelas, angkatan, alamat, namaAyah, namaIbu, phoneOrtu, email, status, createdBy, createdAt, keyData) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", s.Nis, s.Name, s.Gender, s.TempatLahir, s.TanggalLahir, s.Kelas, s.Angkatan, s.Alamat, s.NamaAyah, s.NamaIbu, s.Phone, s.Email, s.Status, s.CreatedBy, s.CreatedAt, s.Key)
 	if err != nil {
 		return err
 	}
@@ -62,6 +62,34 @@ func (r *repo) UpdateStudent(s *student.Student) error {
 
 func (r *repo) DeleteStudent(id int) error {
 	_, err := r.db.Exec("DELETE FROM data_siswa WHERE id = ?", id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (r *repo) GetStudentsBySync() (*[]student.Student, error) {
+	rows, err := r.db.Query("SELECT id, nis, namaLengkap, jenisKelamin, tempatLahir, tglLahir, kelas, angkatan, alamat, namaAyah, namaIbu, phoneOrtu, email, status, keyData FROM data_siswa where synced=0")
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var students []student.Student
+	for rows.Next() {
+		var s student.Student
+		err := rows.Scan(&s.ID, &s.Nis, &s.Name, &s.Gender, &s.TempatLahir, &s.TanggalLahir, &s.Kelas, &s.Angkatan, &s.Alamat, &s.NamaAyah, &s.NamaIbu, &s.Phone, &s.Email, &s.Status, &s.Key)
+		if err != nil {
+			return nil, err
+		}
+		students = append(students, s)
+	}
+
+	return &students, nil
+}
+
+func (r *repo) UpdateStudentSynced(id int) error {
+	_, err := r.db.Exec("UPDATE data_siswa SET synced = ?  WHERE id = ?", 1, id)
 	if err != nil {
 		return err
 	}

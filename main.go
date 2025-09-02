@@ -5,6 +5,7 @@ import (
 
 	"golang-wails-reactjs/backend/application/auth"
 	"golang-wails-reactjs/backend/application/student"
+	"golang-wails-reactjs/backend/application/sync"
 	sqlite "golang-wails-reactjs/backend/pkg/database"
 
 	"github.com/wailsapp/wails/v2"
@@ -16,11 +17,14 @@ import (
 var assets embed.FS
 
 func main() {
+	defer recover()
+
 	db := sqlite.ConnDB()
 	// Create an instance of the app structure
 	app := NewApp()
 	auth := auth.Provider(db)
 	student := student.Provider(db)
+	sync := sync.Provider(db)
 
 	// Create application with options
 	err := wails.Run(&options.App{
@@ -36,6 +40,7 @@ func main() {
 			app,
 			auth,
 			student,
+			sync,
 		},
 	})
 

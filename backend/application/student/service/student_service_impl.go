@@ -3,6 +3,8 @@ package studentservice
 import (
 	"golang-wails-reactjs/backend/domain/student"
 	"time"
+
+	"github.com/google/uuid"
 )
 
 type service struct {
@@ -24,9 +26,10 @@ func (s *service) GetStudent(id int) (*student.Student, error) {
 }
 
 func (s *service) SaveData(student *student.Student) error {
-	student.CreatedAt = time.Now().UnixMilli()
-
 	if student.ID == 0 {
+		student.CreatedAt = time.Now().UnixMilli()
+		student.Key = uuid.New().String()
+
 		return s.repo.CreateStudent(student)
 	}
 	return s.repo.UpdateStudent(student)

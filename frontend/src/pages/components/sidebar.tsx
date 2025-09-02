@@ -36,6 +36,7 @@ function Sidebar() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="flex-column">
+                        <Nav.Link as={Link} to="/" onClick={handleClose}>Home</Nav.Link>
                         <Nav.Link as={Link} to="/student" onClick={handleClose}>Data Siswa</Nav.Link>
                         <Nav.Link as={Link} to="/teacher" onClick={handleClose}>Data Guru & Staff</Nav.Link>
                         <Nav.Link as={Link} to="/absensi" onClick={handleClose}>Absensi</Nav.Link>
@@ -47,7 +48,7 @@ function Sidebar() {
                         <Nav.Link as={Link} to="/inventory" onClick={handleClose}>Inventaris Sekolah</Nav.Link>
                         <Nav.Link as={Link} to="/tahfidz" onClick={handleClose}>Tahfidz Tahsin</Nav.Link>
                         <Nav.Link as={Link} to="/konseling" onClick={handleClose}>Bimbingan Konseling</Nav.Link>
-                        <Nav.Link as={Link} to="/sync" onClick={handleClose}>Sync</Nav.Link>
+                        <Nav.Link as={Link} to="/sync/upload" onClick={handleClose}>Sync Data</Nav.Link>
                     </Nav>
                 </Offcanvas.Body>
             </Offcanvas>

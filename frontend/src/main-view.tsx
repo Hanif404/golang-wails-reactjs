@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes, Route, HashRouter } from 'react-router-dom';
 import Sidebar from './pages/components/sidebar';
 import Home from './pages/home';
-import Sync from './pages/sync';
+import SyncUpload from './pages/sync-upload';
 import Student from './pages/student';
 import StudentForm from './pages/student-form';
 
@@ -40,7 +40,7 @@ root.render(
             <Route path="/inventory" element={<CommingSoon />} />
             <Route path="/tahfidz" element={<CommingSoon />} />
             <Route path="/konseling" element={<CommingSoon />} />
-            <Route path="/sync" element={<CommingSoon />} />
+            <Route path="/sync/upload" element={<SyncUpload />} />
         </Routes>
     </HashRouter>
     </>

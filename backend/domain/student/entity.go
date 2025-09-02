@@ -18,4 +18,5 @@ type Student struct {
 	Synced       bool   `json:"synced"`
 	CreatedBy    string `json:"created_by"`
 	CreatedAt    int64  `json:"created_at"`
+	Key          string `json:"key"`
 }
